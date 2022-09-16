@@ -1,1 +1,0 @@
-# task-junior-react
