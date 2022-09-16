@@ -1,6 +1,7 @@
 import React from 'react'
 
-const Table = () => {
+const Table = (props) => {
+    const list = props.list
   return (
     <table>
         <thead>
