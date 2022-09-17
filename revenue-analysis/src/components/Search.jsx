@@ -4,29 +4,22 @@ import Table from "./Table";
 
 const Search = () => {
   const [list, setList] = useState([]);
-//   const [query, setQuery] = useState("");
-  const keys = ["isActive", "name", "date"];
+  const [query, setQuery] = useState([]);
 
   const find = (etv) => {
-    console.log(etv)
-    let temp = list.filter((item) => keys.some((key) => item[key].toLowerCase().include(etv)));
-    setList(temp);
+    let temp = list.filter(list => list.name.toLowerCase().includes(etv))
+    setQuery(temp);
   };
-
 
   useEffect(() => {
     const getRecords = async () => {
       const res = await axios.get(`https://oril-coins-test.herokuapp.com/list`);
-    //   console.log(res.data)
       const isAct = res.data.map((item) => {return item.isActive === true ? {...item, isA: 'Active'} : {...item, isA: "Disable"}})
-      console.log(isAct)
       setList(isAct);
+      setQuery(isAct);
     };
     getRecords();
   }, []);
-
-
-// console.log(list)
   return (
     <div>
       <input
@@ -35,10 +28,7 @@ const Search = () => {
         className=""
         onChange={(e) => find(e.target.value)}
       />
-      <ul></ul>
-
-      {/* <Table data={find(list)}/> */}
-      <Table data={list}/>
+      <Table data={query}/>
     </div>
   );
 };
