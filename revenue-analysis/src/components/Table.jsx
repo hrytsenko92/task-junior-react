@@ -1,19 +1,14 @@
 import React, { useState, useEffect } from "react";
 
-const Table = ({ data }) => {
+const Table = ({ data, sortData}) => {
 
-  const headers = [
-    { key: "userName", label: "NAME" },
-    { key: "userDate", label: "DATE" },
-    { key: "userState", label: "STATE" },
-  ];
   return (
     <table>
       <thead>
         <tr>
-          {headers.map((row) => {
-            return <td key={row.key}>{row.label}</td>;
-          })}
+            <td onClick={()=>{sortData("name")}}>NAME</td>
+            <td>Date</td>
+            <td>State</td>
         </tr>
       </thead>
       <tbody>
