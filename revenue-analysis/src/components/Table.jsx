@@ -1,21 +1,32 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
+import { Context } from "./context";
 
-const Table = ({ data, sortData}) => {
+const Table = ({ data, sortData }) => {
+    const {fSetUserLink} = useContext(Context)
 
   return (
     <table>
       <thead>
         <tr>
-            <td onClick={()=>{sortData("name")}}>NAME</td>
-            <td>Date</td>
-            <td>State</td>
+          <td
+            onClick={() => {
+              sortData();
+            }}
+          >
+            NAME
+          </td>
+          <td>Date</td>
+          <td>State</td>
         </tr>
       </thead>
       <tbody>
+        
         {data.map((person) => {
           return (
             <tr key={person._id}>
-              <td>{person.name}</td>
+              <td>
+                <a href="" onClick={fSetUserLink(person.href)}>{person.name}</a>
+              </td>
               <td>{person.date}</td>
               <td>{person.isA}</td>
             </tr>

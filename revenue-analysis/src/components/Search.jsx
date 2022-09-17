@@ -27,13 +27,14 @@ const Search = () => {
     const getAndPrepareData = async () => {
       const res = await axios.get(`https://oril-coins-test.herokuapp.com/list`);
       const dataIsActive = res.data.map((item) => {return item.isActive === true ? {...item, isA: 'Active'} : {...item, isA: "Disable"}})
-      const dataCutDate = dataIsActive.forEach((item) => {
+      const dataAddHref = res.data.map((item) => {return {...item, href: `https://oril-coins-test.herokuapp.com/item/${item.id}`}})
+      const dataCutDate = dataAddHref.forEach((item) => {
         let temp = item.date.slice(0,10)
         let result = temp.split("-").reverse().join(".")
         item.date = result;
     })
-      setList(dataIsActive);
-      setQuery(dataIsActive);
+      setList(dataAddHref);
+      setQuery(dataAddHref);
     };
     getAndPrepareData();
   }, []);
