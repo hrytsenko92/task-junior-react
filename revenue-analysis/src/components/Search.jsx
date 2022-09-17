@@ -3,29 +3,42 @@ import axios from "axios";
 import Table from "./Table";
 
 const Search = () => {
-    const [list, setList] = useState([])
-    const [query, setQuery] = useState("")
-    const keys = ["isActive", "name", "date"]
+  const [list, setList] = useState([]);
+//   const [query, setQuery] = useState("");
+  const keys = ["isActive", "name", "date"];
 
-    const find = (data) => {
-        return data.filter((item) => item.name.toLowerCase().includes(list))
-    }
+  const find = (etv) => {
+    console.log(etv)
+    let temp = list.filter((item) => keys.some((key) => item[key].toLowerCase().include(etv)));
+    setList(temp);
+  };
+
+
   useEffect(() => {
     const getRecords = async () => {
-      const res = await axios.get(`https://oril-coins-test.herokuapp.com/list`); setList(res.data);
+      const res = await axios.get(`https://oril-coins-test.herokuapp.com/list`);
+    //   console.log(res.data)
+      const isAct = res.data.map((item) => {return item.isActive === true ? {...item, isA: 'Active'} : {...item, isA: "Disable"}})
+      console.log(isAct)
+      setList(isAct);
     };
     getRecords();
   }, []);
-  console.log(list[0].name)
-  console.log(query)
+
+
+// console.log(list)
   return (
     <div>
-        <input type="text" placeholder="Search..." className="" onChange={(e) => setQuery(e.target.value) } />
-        <ul>
+      <input
+        type="text"
+        placeholder="Search..."
+        className=""
+        onChange={(e) => find(e.target.value)}
+      />
+      <ul></ul>
 
-        </ul>
-
-        <Table find={find(list)}/>
+      {/* <Table data={find(list)}/> */}
+      <Table data={list}/>
     </div>
   );
 };

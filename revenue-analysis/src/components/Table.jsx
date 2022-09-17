@@ -1,17 +1,32 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
 
-const Table = (props) => {
-    const list = props.list
+const Table = ({data}) => {
+    // console.log(data);
+    const headers = [
+        {key: "userName", label: "NAME"},
+        {key: "userDate", label: "DATE"},
+        {key: "userState", label: "STATE"}
+    ]
   return (
     <table>
         <thead>
             <tr>
-                <th>NAME</th>
-                <th>DATE</th>
-                <th>STATE</th>
+                {headers.map((row) => {
+                    return <td key={row.key}>{row.label}</td>
+                })}
             </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+            {data.map((person) => {
+                return (
+                    <tr key={person._id}>
+                        <td>{person.name}</td>
+                        <td>{person.date}</td>
+                        <td>{person.isA}</td>
+                    </tr>
+                )
+            })}
+        </tbody>
     </table>
   )
 }
