@@ -16,25 +16,26 @@ const Search = () => {
         let sorted = query.sort((a,b) => a.name - b.name ? 1 : -1)
         setQuery(sorted);
         SetSortPosition(true)
-        console.log(sorted)
-        console.group(sortPosition)
     } else {
         let sorted = query.sort((a,b) => b.name - a.name ? 1 : -1)
         setQuery(sorted);
         SetSortPosition(false)
-        console.log(sorted)
-        console.log(sortPosition)
     }
   }
 
   useEffect(() => {
-    const getRecords = async () => {
+    const getAndPrepareData = async () => {
       const res = await axios.get(`https://oril-coins-test.herokuapp.com/list`);
-      const isAct = res.data.map((item) => {return item.isActive === true ? {...item, isA: 'Active'} : {...item, isA: "Disable"}})
-      setList(isAct);
-      setQuery(isAct);
+      const dataIsActive = res.data.map((item) => {return item.isActive === true ? {...item, isA: 'Active'} : {...item, isA: "Disable"}})
+      const dataCutDate = dataIsActive.forEach((item) => {
+        let temp = item.date.slice(0,10)
+        let result = temp.split("-").reverse().join(".")
+        item.date = result;
+    })
+      setList(dataIsActive);
+      setQuery(dataIsActive);
     };
-    getRecords();
+    getAndPrepareData();
   }, []);
   return (
     <div>
