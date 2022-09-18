@@ -1,9 +1,7 @@
-import React, { useState, useContext } from "react";
-import { Context } from "./context";
+import React, { useState } from "react";
 
 const Table = ({ data, sortData }) => {
-    const {fSetUserLink} = useContext(Context)
-
+console.log(data)
   return (
     <table>
       <thead>
@@ -20,12 +18,11 @@ const Table = ({ data, sortData }) => {
         </tr>
       </thead>
       <tbody>
-        
         {data.map((person) => {
           return (
             <tr key={person._id}>
               <td>
-                <a href="" onClick={fSetUserLink(person.href)}>{person.name}</a>
+                <a>{person.name}</a>
               </td>
               <td>{person.date}</td>
               <td>{person.isA}</td>

@@ -1,7 +1,7 @@
-import React, { useState, useContext } from "react";
-import { Context } from "./context";
+import React, { useState, useEffect } from "react";
 
-function User({link}) {
+function User() {
+  const [link, setLink] = useState("")
   return (
     <div>User</div>
   )
