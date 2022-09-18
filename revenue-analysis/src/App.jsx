@@ -1,10 +1,9 @@
-import "./App.css";
 import React from "react";
-import Search from "./components/Search";
+import Search from "./Search";
 
 function App() {
   return (
-      <Search />
+    <Search />
   );
 }
 
