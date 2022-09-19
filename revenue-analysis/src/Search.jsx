@@ -58,8 +58,12 @@ const Search = () => {
         };
       });
       const dateUtcToTimeStamp = dataAddHref.forEach((item) => {item.date = Date.parse(item.date)});
-      setList(dataAddHref); 
-      setQuery(dataAddHref); 
+      const dataNewDate = dataAddHref.map((item) => {
+        let nDate = new Date(item.date).toLocaleString("pl-PL").split(",").slice(0, 1);
+        return { ...item, dateModify: nDate[0] };
+      });
+      setList(dataNewDate); 
+      setQuery(dataNewDate); 
     };
     getAndPrepareData();
   }, []);
