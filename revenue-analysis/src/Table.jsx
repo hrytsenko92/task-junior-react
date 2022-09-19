@@ -1,21 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 
 const Table = ({ data, sortDate, sortState }) => {
-  // let ur = useLocation();
-  // const [modify, setModify] = useState([]);
-
-  // useEffect(() => {
-  //   const utcDate = () => {
-  //     let res = data.map((item) => {
-  //       let nDate = new Date(item.date).toLocaleString("pl-PL").split(",").slice(0, 1);
-  //       return { ...item, dateModify: nDate[0] };
-  //     });
-  //     setModify(res);
-  //   };
-  //   utcDate();
-  // }, [data]);
-  console.log(data);
   return (
     <table>
       <thead>
@@ -42,7 +28,7 @@ const Table = ({ data, sortDate, sortState }) => {
           return (
             <tr key={person._id}>
               <td>
-                <Link to="/User">{person.name}</Link>
+              <Link to="/User" state={{ from: person.href }}>{person.name}</Link> 
               </td>
               <td>{person.dateModify}</td>
               <td>{person.isA}</td>
