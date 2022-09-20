@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@400;500;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.listPageWrap {
+    margin: 0 auto;
+    width: 1280px;
+    height: 792px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+.listContentWrap {
+    display: block;
+    width: 1170px;
+    height: auto;
+}
+.listPageInput {
+    width: 320px;
+    height: 40px;
+    margin-bottom: 50px;
+    border-radius: 8px;
+    background: url("./img/Component\ 1.svg") no-repeat scroll 7px 10px;
+    padding-left:30px;
+    border: 2px solid #dbdbdb;
+}
+
+.dataTable {
+    border: 2px solid #E5E7EB;
+    border-radius: 8px;
+}
+.dataTableHead {
+    height: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    background-color: #F6F6F6;
+}
+.headName {
+grid-column: 1/2;
+grid-row: 1/2;
+}
+.headDate {
+grid-column: 2/3;
+grid-row: 1/2;
+}
+.headState {
+grid-column: 4/5;
+grid-row: 1/2;
+}
+.bodyRow {
+    height: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+.rowLink {
+    grid-column: 1/2;
+    grid-row: 1/2;
+}
+.rowDate {
+    grid-column: 2/3;
+    grid-row: 1/2; 
+}
+.rowState {
+    grid-column: 4/5;
+    grid-row: 1/2; 
+}
+
+li {
+    list-style: none;
+    margin: 16px 0 16px 24px;
+}
+.tableLink {
+   text-decoration: none;
+   color: inherit;
+}
+.tableLink:hover {
+    color: red;
+}

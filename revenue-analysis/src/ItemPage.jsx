@@ -3,6 +3,7 @@ import Charts from "./Charts";
 import Info from "./Info";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
+import styles from './itemPageStyle.module.css'
 
 function User(props) {
   const charWeek = [
@@ -51,13 +52,9 @@ function User(props) {
     setMaxData(Math.max(...currentData).toFixed(2));
   };
   const setMediumSum = () => {
-    setMediumData(currentData.reduce((a, b) => (a + b)) / currentData.length.toFixed(2))
+    let mediumAll = currentData.reduce((a, b) => (a + b)) / currentData.length
+      setMediumData(mediumAll .toFixed(2))
   };
-
-
-  // // setMinData(Math.min(...charData).toFixed(2))
-  // // setMaxData(Math.max(...charData).toFixed(2))
-  // // setMediumData(charData.reduce((a, b) => (a + b)) / charData.length)
 
   const setWeek = () => {
     let temp = data.slice(0, 7);
@@ -109,26 +106,25 @@ function User(props) {
       setTotal(defaultData.reduce((a, b) => a + b, 0).toFixed(2));
       setMinData(Math.min(...defaultData).toFixed(2));
       setMaxData(Math.max(...defaultData).toFixed(2));
-      setMediumData(defaultData.reduce((a, b) => (a + b)) / defaultData.length.toFixed(2))
+      let mediumAll = defaultData.reduce((a, b) => (a + b)) / defaultData.length
+      setMediumData(mediumAll .toFixed(2))
     };
     getAndPrepareData();
   }, []);
-
-  console.log(total);
   return (
-    <>
-      <header>
+<div className={styles.itemPageWrap}>
+<header className={styles.itemPageHeader}>
         <h2>Revenue</h2>
-        <div>
-          <button onClick={() => setWeek()}>Week</button>
-          <button onClick={() => setMonth()}>Month</button>
-          <button onClick={() => setYear()}>Year</button>
+        <div className={styles.btnWrap}>
+          <button className={styles.headerBtn} onClick={() => setWeek()}>Week</button>
+          <button className={styles.headerBtn} onClick={() => setMonth()}>Month</button>
+          <button className={styles.headerBtn} onClick={() => setYear()}>Year</button>
         </div>
       </header>
-      <main>
+<main className={styles.itemPageMain}>
         <Charts charData={currentData} period={charBottomInfo} />
       </main>
-      <footer>
+<footer className={styles.itemPageFooter}>
         <Info
           total={total}
           minData={minData}
@@ -136,7 +132,7 @@ function User(props) {
           maxData={maxData}
         />
       </footer>
-    </>
+</div>
   );
 }
 

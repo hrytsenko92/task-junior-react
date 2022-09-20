@@ -41,7 +41,8 @@ function Charts({ charData, period }) {
 
   return (
     <div>
-      <Line data={data} />
+      <Line data={data}  height="300px"
+  options={{ maintainAspectRatio: false }}/>
     </div>
   );
 }
