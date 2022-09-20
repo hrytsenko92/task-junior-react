@@ -4,28 +4,30 @@ import axios from "axios";
 import { useLocation } from 'react-router-dom'
 
 function User(props) {
+  const charWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+  const charMonth = ["1st Week", "2nd Week", "3rd Week", "4rd Week"]
+  const charYear = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+
   const location = useLocation()
   const { from } = location.state
   const [data, setData] = useState([])
-  const [currentData, setCurrentData] = useState([]) /// add props
+  const [currentData, setCurrentData] = useState([])
   const [charBottomInfo, setCharBottomInfo] = useState(charWeek)
 
-  const charWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-  const charMonth = ["January", "	February", "March", "April", "May", "June", "July", "August", "	September", "October", "November", "December"]
-  const charYear = ["All year"]
+ 
 
   const setWeek = () => {
-    let temp = data.splice(0, 7)
+    let temp = data.slice(0, 7)
     setCurrentData(temp)
     setCharBottomInfo(charWeek)
   }
   const setMonth = () => {
-    let temp = data.splice(0, 29)
+    let temp = data.slice(0, 29)
     setCurrentData(temp)
     setCharBottomInfo(charMonth)
   }
   const setYear = () => {
-    let temp = data.splice(0, 364)
+    let temp = data.slice(0, 99)
     setCurrentData(temp)
     setCharBottomInfo(charYear)
   }
@@ -36,8 +38,9 @@ function User(props) {
       const filtered = queryData.data.data.filter((item)=> {return item.curency !== "null"})
       const curencyAndDateToNum = filtered.forEach((item)=> {item.date = Date.parse(item.date); item.curency = Number(item.curency)})
       const sortedByDate = filtered.sort((a, b)=> { return b.date - a.date})
-      setData(sortedByDate);
-      let defaultData = sortedByDate.splice(0, 7)
+      const dataNumbers = sortedByDate.map((item) => {return item.curency})
+      setData(dataNumbers);
+      let defaultData = dataNumbers.slice(0, 7)
       setCurrentData(defaultData)
     };
     getAndPrepareData();
