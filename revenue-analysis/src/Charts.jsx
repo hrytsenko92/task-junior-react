@@ -12,9 +12,6 @@ import {
 import { Line } from 'react-chartjs-2';
 
 function Charts({ charData, period }) {
-  console.log(charData);
-  console.log(period)
-
   ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -27,15 +24,6 @@ function Charts({ charData, period }) {
 
    const options = {
     responsive: true,
-    scales: {
-        yAxes: [{
-            display: true,
-            scaleLabel: {
-                display: true,
-                labelString: '$ Value'
-            }
-        }]
-    }
   };
 
   const data = {
