@@ -39,12 +39,7 @@ const Search = () => {
   useEffect(() => {
     const getAndPrepareData = async () => {
       const res = await axios.get(`https://oril-coins-test.herokuapp.com/list`);
-      const dataIsActive = res.data.map((item) => {
-        return item.isActive === true
-          ? { ...item, isA: "Active" }
-          : { ...item, isA: "Disable" };
-      });
-      const dataAddHref = dataIsActive.map((item) => {
+      const dataAddHref = res.data.map((item) => {
         return {
           ...item,
           href: `https://oril-coins-test.herokuapp.com/item/${item.id}`,

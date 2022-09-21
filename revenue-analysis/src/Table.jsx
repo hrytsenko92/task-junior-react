@@ -3,6 +3,13 @@ import { Link } from "react-router-dom";
 import styles from './listPageStyle.module.css'
 
 const Table = ({ data, sortDate, sortState }) => {
+  const Active = {
+    color: '#5D5FEF',
+  };
+  const Disable = {
+    color: '#EF5DA8',
+  };
+  console.log(data)
   return (
 <div className={styles.dataTable}>
   <div className={styles.dataTableHead}>
@@ -15,7 +22,7 @@ const Table = ({ data, sortDate, sortState }) => {
               <div className={styles.rowLink}><li><Link className={styles.tableLink} to="/User" state={{ from: person.href }}>{person.name}</Link> </li>
               </div>
               <div className={styles.rowDate}><li>{person.dateModify}</li></div>
-              <div className={styles.rowState}><li>{person.isA}</li></div>
+              <div className={styles.rowState}><li>{person.isActive === true ? <div style={Active}>Active</div>: <div style={Disable}>Disable</div>}</li></div>
             </div>
           );
         })}
