@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Revenue analysis
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -14,3 +14,4 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
+https://user-images.githubusercontent.com/98227096/191527729-fddb2d1c-0070-4d51-be8e-667cb9c217b7.mov
