@@ -9,7 +9,6 @@ const Table = ({ data, sortDate, sortState }) => {
   const Disable = {
     color: '#EF5DA8',
   };
-  console.log(data)
   return (
 <div className={styles.dataTable}>
   <div className={styles.dataTableHead}>
