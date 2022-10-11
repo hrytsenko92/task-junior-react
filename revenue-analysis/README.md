@@ -1,18 +1,20 @@
 # Revenue analysis
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## How to run
 
-## Available Scripts
+### Open your terminal and then type
 
-In the project directory, you can run:
+$ git clone {the url to my GitHub repo}
 
-### `npm start`
+### cd into the new folder and type
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+$ npm install
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### To run the React project. 
+$ npm start
+
+
+## Quick review
 
 
 https://user-images.githubusercontent.com/98227096/191533003-4e715136-5fef-4487-be39-f7cfd06de67b.mov
